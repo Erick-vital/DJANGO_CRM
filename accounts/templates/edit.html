@@ -1,0 +1,12 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container">
+    <h2>Editar cliente</h2>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+</div>
+{% endblock content %}

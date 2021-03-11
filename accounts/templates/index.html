@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block content %}
+<body>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <th scope="col">ID</th>
+                <th scope="col">name</th>
+                <th scope="col">phone</th>
+                <th scope="col">email</th>
+                <th scope="col">date created</th>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <th>{{ cliente.id }}</th>
+                    <th>{{ cliente.name }}</th>
+                    <th>{{ cliente.phone }}</th>
+                    <th>{{ cliente.email }}</th>
+                    <th>{{ cliente.date_created }}</th>
+                    <th>
+                        <a href="{% url 'edit' cliente.id %}">Editar</a> |
+                        <form action="{% url 'delete' cliente.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Borrar">
+                        </form>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock content %}
+</html>
